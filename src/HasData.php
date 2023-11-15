@@ -75,7 +75,6 @@ trait HasData
         foreach ($attributes as $key => $value) {
             // Remove attribute from the model
             unset($this->attributes[$key], $this->original[$key]);
-
         }
 
         // Add attribute to the data column
