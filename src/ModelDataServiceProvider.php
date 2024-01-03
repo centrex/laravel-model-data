@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Centrex\ModelData;
 
@@ -18,11 +18,11 @@ class ModelDataServiceProvider extends ServiceProvider
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'model-data');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('model-data.php'),
+                __DIR__ . '/../config/config.php' => config_path('model-data.php'),
             ], 'model-data-config');
 
             // Publishing the views.
@@ -49,11 +49,11 @@ class ModelDataServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'model-data');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'model-data');
 
         // Register the main class to use with the facade
         $this->app->singleton('model-data', function () {
-            return new Data;
+            return new Data();
         });
     }
 }

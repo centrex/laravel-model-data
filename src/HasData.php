@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace Centrex\ModelData;
 
-use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Database\Eloquent\Relations\{MorphOne, Relation};
 
 /**
  * This trait lets you add a "data" column functionality to any Eloquent model.
@@ -33,7 +32,7 @@ trait HasData
 
     protected function decodeVirtualColumn(): void
     {
-        if ( ! $this->dataEncoded) {
+        if (!$this->dataEncoded) {
             return;
         }
 
@@ -65,9 +64,9 @@ trait HasData
             return;
         }
 
-        $dataColumn = static::getDataColumn();
+        $dataColumn    = static::getDataColumn();
         $customColumns = static::getCustomColumns();
-        $attributes = array_filter($this->getAttributes(), fn ($key) => ! in_array($key, $customColumns), ARRAY_FILTER_USE_KEY);
+        $attributes    = array_filter($this->getAttributes(), fn ($key) => !in_array($key, $customColumns), ARRAY_FILTER_USE_KEY);
 
         // Remove data column from the attributes
         unset($attributes[$dataColumn]);
@@ -146,14 +145,14 @@ trait HasData
     {
         $listeners = $this->getAfterListeners()[$event] ?? [];
 
-        if ( ! $event) {
+        if (!$event) {
             return;
         }
 
         foreach ($listeners as $listener) {
             if (is_string($listener)) {
                 $listener = app($listener);
-                $handle = [$listener, 'handle'];
+                $handle   = [$listener, 'handle'];
             } else {
                 $handle = $listener;
             }
@@ -194,7 +193,7 @@ trait HasData
             return $column;
         }
 
-        return static::getDataColumn().'->'.$column;
+        return static::getDataColumn() . '->' . $column;
     }
 
     /** Get Data */
@@ -207,7 +206,7 @@ trait HasData
     {
         $modelClass = $this->getDataModelClassName();
 
-        return (new $modelClass)->getTable();
+        return (new $modelClass())->getTable();
     }
 
     protected function getModelKeyColumnName(): string
