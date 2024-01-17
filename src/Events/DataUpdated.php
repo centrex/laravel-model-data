@@ -12,10 +12,10 @@ class DataUpdated
     /** @var \Centrex\ModelData\Data|null */
     public $oldData;
 
-    /** @var \Centrex\ModelData\Data */
+    /** @var Data */
     public $newData;
 
-    /** @var \Illuminate\Database\Eloquent\Model */
+    /** @var Model */
     public $model;
 
     public function __construct(?Data $oldData, Data $newData, Model $model)
