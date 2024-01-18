@@ -64,9 +64,9 @@ trait HasData
             return;
         }
 
-        $dataColumn    = static::getDataColumn();
+        $dataColumn = static::getDataColumn();
         $customColumns = static::getCustomColumns();
-        $attributes    = array_filter($this->getAttributes(), fn ($key) => !in_array($key, $customColumns), ARRAY_FILTER_USE_KEY);
+        $attributes = array_filter($this->getAttributes(), fn ($key) => !in_array($key, $customColumns), ARRAY_FILTER_USE_KEY);
 
         // Remove data column from the attributes
         unset($attributes[$dataColumn]);
@@ -152,7 +152,7 @@ trait HasData
         foreach ($listeners as $listener) {
             if (is_string($listener)) {
                 $listener = app($listener);
-                $handle   = [$listener, 'handle'];
+                $handle = [$listener, 'handle'];
             } else {
                 $handle = $listener;
             }
