@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DataUpdated
 {
-    /** @var \Centrex\ModelData\Data|null */
+    /** @var Data|null */
     public $oldData;
 
     /** @var Data */

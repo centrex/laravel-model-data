@@ -66,12 +66,12 @@ trait HasData
 
         $dataColumn = static::getDataColumn();
         $customColumns = static::getCustomColumns();
-        $attributes = array_filter($this->getAttributes(), fn ($key) => !in_array($key, $customColumns), ARRAY_FILTER_USE_KEY);
+        $attributes = array_filter($this->getAttributes(), fn ($key): bool => !in_array($key, $customColumns), ARRAY_FILTER_USE_KEY);
 
         // Remove data column from the attributes
         unset($attributes[$dataColumn]);
 
-        foreach ($attributes as $key => $value) {
+        foreach (array_keys($attributes) as $key) {
             // Remove attribute from the model
             unset($this->attributes[$key], $this->original[$key]);
         }
@@ -104,7 +104,7 @@ trait HasData
     {
         return [
             'retrieved' => [
-                function () {
+                function (): void {
                     // Always decode after model retrieval
                     $this->dataEncoded = true;
 
@@ -141,7 +141,7 @@ trait HasData
         return $result;
     }
 
-    public function runAfterListeners($event, $halt = true)
+    public function runAfterListeners($event, $halt = true): void
     {
         $listeners = $this->getAfterListeners()[$event] ?? [];
 
@@ -161,7 +161,7 @@ trait HasData
         }
     }
 
-    public function getCasts()
+    public function getCasts(): array
     {
         return array_merge(parent::getCasts(), [
             static::getDataColumn() => 'array',
