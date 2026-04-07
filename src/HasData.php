@@ -4,7 +4,9 @@ declare(strict_types = 1);
 
 namespace Centrex\ModelData;
 
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\Relations\{MorphOne, Relation};
+use Illuminate\Support\Facades\Crypt;
 
 /**
  * This trait lets you add a "data" column functionality to any Eloquent model.
@@ -145,7 +147,7 @@ trait HasData
     {
         $listeners = $this->getAfterListeners()[$event] ?? [];
 
-        if (!$event) {
+        if (empty($listeners)) {
             return;
         }
 
@@ -171,8 +173,7 @@ trait HasData
     /** Get the name of the column that stores additional data. */
     public static function getDataColumn(): string
     {
-        // return 'data';
-        return static::data()->data;
+        return 'data';
     }
 
     public static function getCustomColumns(): array
