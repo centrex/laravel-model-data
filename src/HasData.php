@@ -217,7 +217,7 @@ trait HasData
 
     protected function getDataModelClassName(): string
     {
-        return config('model-data.data_model');
+        return config('model-data.data_model') ?? config('model-data.status_model') ?? Data::class;
     }
 
     protected function getDataAttributeName(): string

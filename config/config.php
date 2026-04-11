@@ -6,6 +6,11 @@ return [
      *
      * The model must be or extend `Centrex\ModelData\Data`.
      */
+    'data_model' => Centrex\ModelData\Data::class,
+
+    /*
+     * Backward compatibility for older installs that referenced the wrong key.
+     */
     'status_model' => Centrex\ModelData\Data::class,
 
     /*
