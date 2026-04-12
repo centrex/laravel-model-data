@@ -5,14 +5,17 @@ declare(strict_types = 1);
 namespace Centrex\ModelData;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\{MorphTo};
 
 class Data extends Model
 {
     protected $guarded = [];
 
     protected $table = 'model_datas';
+
+    protected $casts = [
+        'data' => 'array',
+    ];
 
     public function model(): MorphTo
     {
