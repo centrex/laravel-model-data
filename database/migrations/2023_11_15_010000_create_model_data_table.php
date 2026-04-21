@@ -11,11 +11,14 @@ return new class() extends Migration
     public function up()
     {
         Schema::create('model_datas', function (Blueprint $table) {
-            $table->id();
+            $table->string('key', 32)->primary();
+            $table->string('data_type')->default('data');
             $table->morphs('model');
-            $table->json('data');
+            $table->json('data')->nullable();
             $table->timestamps();
-        });
+
+            $table->index(['model_type', 'model_id', 'data_type']);
+        });        
     }
 
     /** Reverse the migrations. */

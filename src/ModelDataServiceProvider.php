@@ -5,6 +5,7 @@ declare(strict_types = 1);
 namespace Centrex\ModelData;
 
 use Illuminate\Support\ServiceProvider;
+use Centrex\ModelData\Models\Data;
 
 class ModelDataServiceProvider extends ServiceProvider
 {
