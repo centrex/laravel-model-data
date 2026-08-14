@@ -7,12 +7,12 @@ namespace Centrex\ModelData\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Centrex\ModelData\Data
+ * @see \Centrex\ModelData\Models\Data
  */
 class Data extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \Centrex\ModelData\Data::class;
+        return 'model-data';
     }
 }

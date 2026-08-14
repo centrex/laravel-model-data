@@ -4,7 +4,7 @@ declare(strict_types = 1);
 
 namespace Centrex\ModelData\Events;
 
-use Centrex\ModelData\Data;
+use Centrex\ModelData\Models\Data;
 use Illuminate\Database\Eloquent\Model;
 
 class DataUpdated

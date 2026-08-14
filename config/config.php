@@ -4,14 +4,14 @@ return [
     /*
      * The class name of the data model that holds additional data.
      *
-     * The model must be or extend `Centrex\ModelData\Data`.
+     * The model must be or extend `Centrex\ModelData\Models\Data`.
      */
-    'data_model' => Centrex\ModelData\Data::class,
+    'data_model' => Centrex\ModelData\Models\Data::class,
 
     /*
      * Backward compatibility for older installs that referenced the wrong key.
      */
-    'status_model' => Centrex\ModelData\Data::class,
+    'status_model' => Centrex\ModelData\Models\Data::class,
 
     /*
      * The name of the attribute to access the latest data.
